@@ -8,6 +8,7 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
 
 <body>
@@ -37,26 +38,44 @@
     <hr id="navhr">
 
     <div class="container mt-2">
-        {% block content %}
+        <!-- {% block content %}
         <div class="post">
             {% if post.published_date %}
             <div class="lead mt-4">
                 {{ post.published_date }}
-                <div class="stats d-inline float-right mr-3">
-                    <i class="d-inline float-left p-2 fa fa-book fa-2x"></i><div class="d-inline pr-2 stats-txt">: 50</div>
-                </div>
-                <div class="stats d-inline float-right mr-3">
-                    <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i><div class="d-inline pr-2 stats-txt">: 20</div>
-                </div>
             </div>
-            
             {% endif %}
             <h1 class="mt-2 mb-3">{{ post.title }}</h1>
             <div class="shadow-lg p-3 mb-5 rounded">
                 <p class="lead">{{ post.text|linebreaksbr }}</p>
             </div>
         </div>
-        {% endblock %}
+        {% endblock %} -->
+
+        <div class="shadow-lg p-3 mt-5 mb-5 rounded">
+            <p class="lead" style="font-size: 150%; font-weight: bolder;">Developer Name: Bharat Ahuja
+                <br><br>
+                Email: ba8365@bennett.edu.in
+                <br><br>
+                Website: <a href="https://www.linkedin.com/in/bharat-ahuja" target="_blank"
+                    style="color:white;">https://www.linkedin.com/in/bharat-ahuja</a>
+                <br><br>
+                Bennett University</p>
+        </div>
+
+        <div class="shadow-lg p-3 mt-5 mb-5 rounded">
+            <p class="lead" style="font-size: 150%; font-weight: bolder;">
+            <div class="stats-n">
+                <i class="d-inline float-left p-2 fa fa-book fa-2x"></i>
+                <div class="d-inline pr-2 stats-txt">: Total Read Count of The Story</div>
+            </div>
+            <div class="stats-n">
+                <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i>
+                <div class="d-inline pr-2 stats-txt">: Number of People Currently Viewing The Story </div>
+            </div>
+            </p>
+        </div>
+
 
 
 

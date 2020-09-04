@@ -8,4 +8,5 @@ urlpatterns = [
     # path('stories/story3', views.story3, name='story3'),
 
     path('story/<int:pk>/', views.post_detail, name='post_detail'),
+    path('about', views.about, name='about'),
 ]
