@@ -1,4 +1,4 @@
-<!-- {% load static %} -->
+{% load static %}
 <html>
 
 <head>
@@ -36,30 +36,21 @@
     <hr id="navhr">
 
     <div class="container mt-2">
-        <div>
-            <h1>The Wedding Of The Mouse</h1>
+        {% block content %}
+        <div class="post">
+            {% if post.published_date %}
+            <div class="lead mt-4">
+                {{ post.published_date }}
+            </div>
+            {% endif %}
+            <h1 class="mt-2 mb-3">{{ post.title }}</h1>
+            <div class="shadow-lg p-3 mb-5 rounded">
+                <p class="lead">{{ post.text|linebreaksbr }}</p>
+            </div>
         </div>
+        {% endblock %}
 
 
-
-        <div class="shadow-lg p-3 mb-5 rounded">
-            <br>
-            <p class="lead">Once a sage was bathing in a river when a hawk dropped a mouse it was holding in its claws
-                right onto his hands. Afraid that the hawk would pounce on the mouse if he left it alone, the sage
-                transformed the small animal into a beautiful baby girl and took her home to his wife. Since the couple
-                did not have a child of their own, they adopted the baby, thinking her to be a blessing from god.
-                <br><br>
-                When the girl reached a marriageable age, the sage and his wife decided to find the best husband for
-                their daughter. So the proud father took his daughter to the Sun God. However, the girl refused to marry
-                him. Similarly, the sage met with the King of Cloud, the Lord of Winds and the Lord of Mountains. But
-                the daughter dismissed all of them, despite their mighty powers. Finally the Lord of Mountains suggested
-                that the King of Mice was far superior to him, since the latter could bore hills all over him. When the
-                sage’s daughter met the King of Mice, she immediately agreed to the union. Then the father transformed
-                his daughter back to a female mouse and the happy couple got married.
-                <br><br>
-                This story is from Panchatantra, collection of fables from ancient India written in Sanskrit. The moral
-                of the story is that our innate nature can never change, despite external appearances.</p>
-        </div>
 
         <a href="/"><button class="mb-5">Back</button></a>
     </div>
