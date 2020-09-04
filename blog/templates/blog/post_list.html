@@ -8,18 +8,19 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="/">Stories</a>
+        <a class="navbar-brand" href="/home">Stories</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="/about">About <span class="sr-only">(current)</span></a>
                 <!-- <a class="nav-item ml-auto nav-link" href="#">Logout</a> -->
                 <!-- <a class="nav-item nav-link" href="#">About Us</a> -->
@@ -29,12 +30,18 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-item nav-link" href="#">Logout</a>
+                    <a class="nav-item nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
     <hr id="navhr">
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>M.toast({html: "{{message}}", displayLength:2000});</script>
+        {% endfor %}
+    {% endif %}
 
     <div class="container mt-2">
         <div>
