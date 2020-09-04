@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %} -->
 <html>
 
 <head>
@@ -37,54 +37,31 @@
 
     <div class="container mt-2">
         <div>
-            <h1><a class="blog" href="/">Stories</a></h1>
+            <h1>The Mongoose and the Farmer’s Wife</h1>
         </div>
 
-        <!-- <div>
-            {% for post in posts %}
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ post.published_date }}</p>
-                    <h2><a class="blog" href="">{{ post.title }}</a></h2>
-                    <p class="p">{{ post.text|linebreaksbr }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div> -->
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.0.published_date }}</p>
-                    <h2><a class="blog" href="stories/story1">{{ posts.0.title }}</a></h2>
-                    <p class="p">{{ post.0.text|linebreaksbr }}</p>
-                </div>
-            </div>
+
+
+        <div class="shadow-lg p-3 mb-5 rounded">
+            <br>
+            <p class="lead">One day a farmer and his wife were blessed with a son. They decided to get a mongoose as a
+                companion for him. A few months later, the couple had to go out, leaving their son at home. While the
+                wife was worried about leaving the baby alone, the farmer assured her that the mongoose would look after
+                him while they were away.
+                <br><br>
+                The farmer’s wife returned earlier than her husband and found that the mongoose’s mouth was stained with
+                blood. She immediately accused the animal of killing her child, and in a fit of rage threw a heavy box
+                at the mongoose. She then rushed in to check on her son, but what she found was a dead snake lying in
+                the room while her baby was safe and sound. Seeing this, the farmer’s wife realised that the mongoose
+                had actually saved her son’s life. Realising her mistake, she went out to see if the animal was all
+                right, but it was too late and the mongoose had breathed its last. She was absolutely heartbroken and
+                reproached herself for her actions.
+                <br><br>
+                This is another Panchatantra tale, and the story is often told to children to teach them how acting in
+                haste can have dire consequences.</p>
         </div>
 
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.1.published_date }}</p>
-                    <h2><a class="blog" href="stories/story2">{{ posts.1.title }}</a></h2>
-                    <p class="p">{{ post.1.text|linebreaksbr }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.2.published_date }}</p>
-                    <h2><a class="blog" href="stories/story3">{{ posts.2.title }}</a></h2>
-                    <p class="p">{{ post.2.text|linebreaksbr }}</p>
-                </div>
-            </div>
-        </div>
-
+        <a href="/"><button class="mb-5">Back</button></a>
     </div>
 
 

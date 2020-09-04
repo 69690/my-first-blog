@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %} -->
 <html>
 
 <head>
@@ -37,54 +37,36 @@
 
     <div class="container mt-2">
         <div>
-            <h1><a class="blog" href="/">Stories</a></h1>
+            <h1>Sulasa and Sattuka</h1>
         </div>
 
-        <!-- <div>
-            {% for post in posts %}
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ post.published_date }}</p>
-                    <h2><a class="blog" href="">{{ post.title }}</a></h2>
-                    <p class="p">{{ post.text|linebreaksbr }}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div> -->
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.0.published_date }}</p>
-                    <h2><a class="blog" href="stories/story1">{{ posts.0.title }}</a></h2>
-                    <p class="p">{{ post.0.text|linebreaksbr }}</p>
-                </div>
-            </div>
+
+
+        <div class="shadow-lg p-3 mb-5 rounded">
+            <br>
+            <p class="lead">The story of Sulasa and Sattuka is from the famous Jataka tales, a lengthy work of
+                literature that talks about Gautama Buddha’s previous births.
+                <br><br>
+                Once there lived a beautiful prostitute named Sulasa. One day, she saw a group of soldiers dragging a
+                man towards the place of execution, and instantly fell in love with him. That man was the feared robber
+                Sattuka. Sulasa hurriedly sent a thousand gold pieces to the chief constable in exchange for Sattuka’s
+                freedom. She then married him and promised to give up her old life. After a blissful few months of
+                marriage, Sattuka realised that he wasn’t the type to be tied down to a single place or person. He
+                decided to kill his wife, steal all her ornaments and flee town.
+                <br><br>
+                The next day he lied to Sulasa, saying that he had promised a deity on top of a mountain that he’d make
+                offerings if he managed to escape execution. He then made Sulasa put on all her ornaments out of respect
+                to the deity, and took her to the mountain top. When they reached the summit, he revealed his evil plan.
+                Salusa was shocked but she was quick to think on her feet as well. She told Sattuka that she wanted to
+                pay obeisance to her husband from all four sides for the very last time. She knelt in front of him, then
+                on the left and right sides, but when she stepped behind him she took hold of Sattuka and threw him over
+                a cliff. Seeing this, the deity who lived on the mountain said:
+                <br><br>
+                ‘Wisdom at times is not confined to men / A woman can chew wisdom now and then. / Wisdom at times is not
+                confined to men / Women are quick in counsel now and then.’</p>
         </div>
 
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.1.published_date }}</p>
-                    <h2><a class="blog" href="stories/story2">{{ posts.1.title }}</a></h2>
-                    <p class="p">{{ post.1.text|linebreaksbr }}</p>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <div class="shadow-lg p-3 mb-5 rounded">
-                    <br>
-                    <p class="lead">published: {{ posts.2.published_date }}</p>
-                    <h2><a class="blog" href="stories/story3">{{ posts.2.title }}</a></h2>
-                    <p class="p">{{ post.2.text|linebreaksbr }}</p>
-                </div>
-            </div>
-        </div>
-
+        <a href="/"><button class="mb-5">Back</button></a>
     </div>
 
 

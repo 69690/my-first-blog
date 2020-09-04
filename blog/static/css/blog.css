@@ -117,8 +117,8 @@ nav {
 
 .btn.btn-outline-secondary {
     /* @include button-outline-variant(black, #222222, lighten(black, 5%), black); */
-    color: black;
-    border-color: black;
+    color: white;
+    border-color: white;
     border-radius: 38px;
 }
 
@@ -129,13 +129,14 @@ p {
 button {
     padding: 10px 18px;
     margin: 2%;
-    border: 3px solid black;
+    border: 3px solid white;
     border-radius: 36px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
-    color: black;
+    color: white;
     background-color: transparent;
+    /* border-radius: 10px; */
 }
 
 button:hover {
@@ -144,7 +145,7 @@ button:hover {
 
 button.active {
     background-color: transparent;
-    color: #242424;
+    color: white;
 }
 
 button span {
