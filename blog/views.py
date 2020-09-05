@@ -13,6 +13,26 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+def getcount1(request, pk):
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            post = get_object_or_404(Post, pk=pk)
+            return HttpResponse(post.current_view)
+        else:
+            pass
+    else:
+        return redirect('/')
+
+def getcount2(request, pk):
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            post = get_object_or_404(Post, pk=pk)
+            return HttpResponse(post.blog_views)
+        else:
+            pass
+    else:
+        return redirect('/')
+
 def viewpost(request, pk):
     if request.user.is_authenticated: 
         if request.method == "GET":
@@ -64,7 +84,7 @@ def main(request):
 def post_list(request):
     if request.user.is_authenticated:
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-        return render(request, 'blog/post_list.html', {'posts':posts})
+        return render(request, 'blog/post_list.html', {'posts':posts, 'user':request.user.username})
     else:
         return redirect('/')
 
@@ -85,16 +105,16 @@ def post_detail(request, pk):
             post = get_object_or_404(Post, pk=pk)
             post.blog_views = post.blog_views + 1
             post.save()
-            return render(request, 'blog/post_detail.html', {'post': post})
+            return render(request, 'blog/post_detail.html', {'post': post, 'user':request.user.username})
         else:
             post = get_object_or_404(Post, pk=pk)
-            return render(request, 'blog/post_detail.html', {'post': post})
+            return render(request, 'blog/post_detail.html', {'post': post, 'user':request.user.username})
     else:
         return redirect('/')
 
 def about(request):
     if request.user.is_authenticated:
-        return render(request, 'blog/about.html', {})
+        return render(request, 'blog/about.html', {'user':request.user.username})
     else:
         return redirect('/aboutme')
 

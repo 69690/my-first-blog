@@ -30,6 +30,9 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-item nav-link active">{{ user }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-item nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
@@ -69,9 +72,12 @@
                 <i class="d-inline float-left p-2 fa fa-book fa-2x"></i>
                 <div class="d-inline pr-2 stats-txt">: Total Read Count of The Story</div>
             </div>
-            <div class="stats-n mt-2">
+            <div class="stats-n mt-2 mb-2">
                 <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i>
                 <div class="d-inline pr-2 stats-txt">: Number of People Currently Viewing The Story </div>
+            </div>
+            <div class="stats-n mt-2">
+                <div class="d-inline pr-2 stats-txt"> The Above Values Are Dynamically Updated</div>
             </div>
             </p>
         </div>
@@ -82,6 +88,23 @@
         <a href="/home"><button class="mb-5">Back</button></a>
     </div>
 
+    <footer class="site-footer">
+        <div class="container">
+            <div class="col">
+                <div class="row d-inline float-left mt-3">
+                    <p class="lead">
+                        Bharat Ahuja
+                    </p>
+                </div>
+                <div class="row d-inline float-right mt-3">
+                    <p class="lead">
+                        ba8365@bennett.edu.in
+                    </p>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

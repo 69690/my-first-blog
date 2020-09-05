@@ -43,9 +43,9 @@
                             // post_id: catid
                         },
                         success: function (data) {
-                            console.log("working");
-                            console.log(data);
-                            $('#now_viewing').text(': '+data);
+                            // console.log("working");
+                            // console.log(data);
+                            $('#now_viewing').text(': ' + data);
                         }
                     }
                 )
@@ -80,9 +80,9 @@
                         },
                         success: function (data) {
                             // console.log("working");
-                            console.log("SUBTRACT");
-                            console.log(data);
-                            $('#now_viewing').text(': '+data);
+                            // console.log("SUBTRACT");
+                            // console.log(data);
+                            $('#now_viewing').text(': ' + data);
                         }
                     }
                 )
@@ -100,9 +100,9 @@
                             // post_id: catid
                         },
                         success: function (data) {
-                            console.log("ADD");
-                            console.log(data);
-                            $('#now_viewing').text(': '+data);
+                            // console.log("ADD");
+                            // console.log(data);
+                            $('#now_viewing').text(': ' + data);
                         }
                     }
                 )
@@ -118,20 +118,33 @@
                         },
                         success: function (data) {
                             // console.log("working");
-                            console.log("SUBTRACT");
+                            // console.log("SUBTRACT");
+                            // console.log(data);
+                            $('#now_viewing').text(': ' + data);
                         }
                     }
                 )
             }
-            // Clock, as simple as it gets
-            // var h = (new Date()).getHours();
-            // var m = (new Date()).getMinutes();
-            // var s = (new Date()).getSeconds();
-            // h = h < 10 ? "0" + h : h;
-            // m = m < 10 ? "0" + m : m;
-            // s = s < 10 ? "0" + s : s;
-            // // Update clock
-            // console.log("hi");
+
+            $.ajax({
+                type: "GET",
+                url: "/getcount1/{{ post.pk }}/",
+                data: {},
+                success: function (data) {
+                    // console.log("VALUE CHANGED - Currently Reading");
+                    $('#now_viewing').text(': ' + data);
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: "/getcount2/{{ post.pk }}/",
+                data: {},
+                success: function (data) {
+                    // console.log("VALUE CHANGED - Total Read Count");
+                    $('#total_count').text(': ' + data);
+                }
+            })
         });
 
         // setInterval(function () {
@@ -167,6 +180,9 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-item nav-link active">{{ user }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-item nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
@@ -182,7 +198,7 @@
                 {{ post.published_date }}
                 <div class="stats d-inline float-right mr-3">
                     <i class="d-inline float-left p-2 fa fa-book fa-2x"></i>
-                    <div class="d-inline pr-2 stats-txt">: {{post.blog_views}}</div>
+                    <div class="d-inline pr-2 stats-txt" id="total_count"></div>
                 </div>
                 <div class="stats d-inline float-right mr-3">
                     <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i>
@@ -202,6 +218,24 @@
 
         <a href="/home"><button class="mb-5">Back</button></a>
     </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="col">
+                <div class="row d-inline float-left mt-3">
+                    <p class="lead">
+                        Bharat Ahuja
+                    </p>
+                </div>
+                <div class="row d-inline float-right mt-3">
+                    <p class="lead">
+                        ba8365@bennett.edu.in
+                    </p>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
         integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
