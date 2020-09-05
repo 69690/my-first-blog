@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Post 
+from .models import Post, FirstVisit
 
 from django.shortcuts import render, get_object_or_404
 
@@ -33,8 +33,16 @@ def post_list(request):
 
 def post_detail(request, pk):
     if request.user.is_authenticated:
-        post = get_object_or_404(Post, pk=pk)
-        return render(request, 'blog/post_detail.html', {'post': post})
+        if not FirstVisit.objects.filter(user=request.user.id, url=request.path).exists():
+            #user visits for the first time, update page count and show
+            FirstVisit(user=request.user, url=request.path).save()
+            post = get_object_or_404(Post, pk=pk)
+            post.blog_views = post.blog_views + 1
+            post.save()
+            return render(request, 'blog/post_detail.html', {'post': post})
+        else:
+            post = get_object_or_404(Post, pk=pk)
+            return render(request, 'blog/post_detail.html', {'post': post})
     else:
         return redirect('/')
 
