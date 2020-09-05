@@ -28,8 +28,8 @@ def viewpost(request, pk):
                 # display_value = serializers.serialize('json', [post,])
                 return HttpResponse(post.current_view)
             else:
-                print("WTF")
-                print(type((request.path.split('/')[-2])))
+                # print(type((request.path.split('/')[-2])))
+                print("Alreaady Viewing The Story In Another Tab")
                 post = get_object_or_404(Post, pk=pk)
                 return HttpResponse(post.current_view)
         else:
@@ -47,7 +47,6 @@ def viewpostdecrement(request, pk):
                 post.save()
                 return HttpResponse(post.current_view)
             else:
-                print("HERE")
                 print(request.path.split('/')[-2])
                 post = get_object_or_404(Post, pk=pk)
                 return HttpResponse(post.current_view)
