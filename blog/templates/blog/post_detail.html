@@ -8,6 +8,67 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
+        integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        // function d(el) {
+        //     return document.getElementById(el);
+        // }
+        // ifvisible.setIdleDuration(30);
+        
+        // window.onbeforeunload = function() { 
+        //     console.log("YES");
+        // };
+
+        var onBeforeUnLoadEvent = false;
+
+        window.onunload = window.onbeforeunload= function(){
+            if(!onBeforeUnLoadEvent){
+                onBeforeUnLoadEvent = true;
+                //your code here
+            }
+        };
+
+        ifvisible.on('statusChanged', function (e) {
+            alert("LOL");
+        });
+
+        // ifvisible.idle(function () {
+        //     d("result2").innerHTML = "(-_-) Good bye. ZzzZZzz...";
+        //     document.body.style.opacity = 0.5;
+        // });
+
+        // ifvisible.wakeup(function () {
+        //     d("result2").innerHTML = "(O_o) Hey!, you woke me up.";
+        //     document.body.style.opacity = 1;
+        // });
+        
+        ifvisible.onEvery(0.01, function () {
+            // Clock, as simple as it gets
+            // var h = (new Date()).getHours();
+            // var m = (new Date()).getMinutes();
+            // var s = (new Date()).getSeconds();
+            // h = h < 10 ? "0" + h : h;
+            // m = m < 10 ? "0" + m : m;
+            // s = s < 10 ? "0" + s : s;
+            // // Update clock
+            console.log("hi");
+        });
+
+        // setInterval(function () {
+        //     var info = ifvisible.getIdleInfo();
+        //     // Give 3% margin to stabilaze user output
+        //     if (info.timeLeftPer < 3) {
+        //         info.timeLeftPer = 0;
+        //         info.timeLeft = ifvisible.getIdleDuration();
+        //     }
+        //     d("seconds").innerHTML = parseInt(info.timeLeft / 1000), 10;
+        //     d("idlebar").style.width = info.timeLeftPer + '%';
+        // }, 100);
+
+    </script>
 </head>
 
 <body>
@@ -43,13 +104,15 @@
             <div class="lead mt-4">
                 {{ post.published_date }}
                 <div class="stats d-inline float-right mr-3">
-                    <i class="d-inline float-left p-2 fa fa-book fa-2x"></i><div class="d-inline pr-2 stats-txt">: {{post.blog_views}}</div>
+                    <i class="d-inline float-left p-2 fa fa-book fa-2x"></i>
+                    <div class="d-inline pr-2 stats-txt">: {{post.blog_views}}</div>
                 </div>
                 <div class="stats d-inline float-right mr-3">
-                    <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i><div class="d-inline pr-2 stats-txt">: 20</div>
+                    <i class="d-inline float-left p-2 fa fa-eye fa-2x"></i>
+                    <div class="d-inline pr-2 stats-txt" id="now_viewing"></div>
                 </div>
             </div>
-            
+
             {% endif %}
             <h1 class="mt-2 mb-3">{{ post.title }}</h1>
             <div class="shadow-lg p-3 mb-5 rounded">
@@ -63,7 +126,9 @@
         <a href="/home"><button class="mb-5">Back</button></a>
     </div>
 
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
+        integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

@@ -8,6 +8,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
+from django.http import HttpResponse
+
 # Create your views here.
 def main(request):
     if not request.user.is_authenticated:

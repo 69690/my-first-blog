@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url 
 
 urlpatterns = [
     path('', views.main, name="main"),
@@ -14,4 +15,6 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('logout', views.logout_request, name='logout'),
     path('login', views.login_request, name='login'),
+    # url(r'^viewpost/$', views.viewpost, name='viewpost'),
+    # url(r"viewpost/(?P<pk>\d+)/$", views.viewpost, name='viewpost'),
 ]
