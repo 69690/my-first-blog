@@ -16,20 +16,22 @@ from django.http import HttpResponse
 def viewpost(request, pk):
     if request.user.is_authenticated: 
         if request.method == "GET":
-            # if not CurrentViewCheck.objects.filter(user=request.user.id, url=request.path).exists():
-            #     CurrentViewCheck(user=request.user, url=request.path).save()
-            post = get_object_or_404(Post, pk=pk)
-            post.current_view = post.current_view + 1
-            post.save()
-            # json_serializer = serializers.get_serializer("json")()
-            # display_value = json_serializer.serialize(get_object_or_404(Post, pk=pk), ensure_ascii=False)
-            # display_value = json_serializer.serialize(post, ensure_ascii=False)
-            # display_value = json_serializer.serialize(Post.objects.all(), ensure_ascii = False)
-            # display_value = serializers.serialize('json', [post,])
-            return HttpResponse(post.current_view)
-            # else:
-            #     post = get_object_or_404(Post, pk=pk)
-            #     return HttpResponse(post.current_view)
+            if not CurrentViewCheck.objects.filter(user=request.user.username, storyno=request.path.split('/')[-2]).exists(): 
+                CurrentViewCheck(user=request.user.username, storyno=request.path.split('/')[-2]).save()
+                post = get_object_or_404(Post, pk=pk)
+                post.current_view = post.current_view + 1
+                post.save()
+                # json_serializer = serializers.get_serializer("json")()
+                # display_value = json_serializer.serialize(get_object_or_404(Post, pk=pk), ensure_ascii=False)
+                # display_value = json_serializer.serialize(post, ensure_ascii=False)
+                # display_value = json_serializer.serialize(Post.objects.all(), ensure_ascii = False)
+                # display_value = serializers.serialize('json', [post,])
+                return HttpResponse(post.current_view)
+            else:
+                print("WTF")
+                print(type((request.path.split('/')[-2])))
+                post = get_object_or_404(Post, pk=pk)
+                return HttpResponse(post.current_view)
         else:
             return HttpResponse("Not GET Request")
     else:
@@ -38,11 +40,17 @@ def viewpost(request, pk):
 def viewpostdecrement(request, pk):
     if request.user.is_authenticated:
         if request.method == "GET":
-            # CurrentViewCheck.objects.filter(user=request.user.id, url=request.path).delete()
-            post = get_object_or_404(Post, pk=pk)
-            post.current_view = post.current_view - 1
-            post.save()
-            return HttpResponse(post.current_view)
+            if CurrentViewCheck.objects.filter(user=request.user.username, storyno=request.path.split('/')[-2]).exists(): 
+                CurrentViewCheck.objects.filter(user=request.user.username, storyno=request.path.split('/')[-2]).delete()
+                post = get_object_or_404(Post, pk=pk)
+                post.current_view = post.current_view - 1
+                post.save()
+                return HttpResponse(post.current_view)
+            else:
+                print("HERE")
+                print(request.path.split('/')[-2])
+                post = get_object_or_404(Post, pk=pk)
+                return HttpResponse(post.current_view)
         else:
             return HttpResponse("Not GET Request")
     else:

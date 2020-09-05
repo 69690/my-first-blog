@@ -27,9 +27,10 @@ class FirstVisit(models.Model): #CHECK IF USER VISITS A STORY FOR THE FIRST TIME
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
 class CurrentViewCheck(models.Model):
-    url = models.URLField()
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    
+    # url = models.URLField()
+    storyno = models.CharField(max_length=10)
+    user = models.CharField(max_length=50)
+
 # class PostCount(models.Model):
 #     total_views = models.IntegerField(default=0)
 #     view_total_count = models.ForeignKey(Post, on_delete=models.CASCADE)
