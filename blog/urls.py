@@ -17,4 +17,7 @@ urlpatterns = [
     path('login', views.login_request, name='login'),
     # url(r'^viewpost/$', views.viewpost, name='viewpost'),
     # url(r"viewpost/(?P<pk>\d+)/$", views.viewpost, name='viewpost'),
+    # url(r'^viewpost/$', views.likePost, name='likepost'),
+    path('viewpost/<int:pk>/', views.viewpost, name="viewpost"),
+    path('viewpostdecrement/<int:pk>/', views.viewpostdecrement, name="viewpostdecrement"),
 ]

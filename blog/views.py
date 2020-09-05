@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Post, FirstVisit
+from .models import Post, FirstVisit, CurrentViewCheck
 
 from django.shortcuts import render, get_object_or_404
 
@@ -9,8 +9,45 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
 from django.http import HttpResponse
+# from django.core import serializers
 
 # Create your views here.
+
+def viewpost(request, pk):
+    if request.user.is_authenticated: 
+        if request.method == "GET":
+            # if not CurrentViewCheck.objects.filter(user=request.user.id, url=request.path).exists():
+            #     CurrentViewCheck(user=request.user, url=request.path).save()
+            post = get_object_or_404(Post, pk=pk)
+            post.current_view = post.current_view + 1
+            post.save()
+            # json_serializer = serializers.get_serializer("json")()
+            # display_value = json_serializer.serialize(get_object_or_404(Post, pk=pk), ensure_ascii=False)
+            # display_value = json_serializer.serialize(post, ensure_ascii=False)
+            # display_value = json_serializer.serialize(Post.objects.all(), ensure_ascii = False)
+            # display_value = serializers.serialize('json', [post,])
+            return HttpResponse(post.current_view)
+            # else:
+            #     post = get_object_or_404(Post, pk=pk)
+            #     return HttpResponse(post.current_view)
+        else:
+            return HttpResponse("Not GET Request")
+    else:
+        return redirect('/')
+
+def viewpostdecrement(request, pk):
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            # CurrentViewCheck.objects.filter(user=request.user.id, url=request.path).delete()
+            post = get_object_or_404(Post, pk=pk)
+            post.current_view = post.current_view - 1
+            post.save()
+            return HttpResponse(post.current_view)
+        else:
+            return HttpResponse("Not GET Request")
+    else:
+        return redirect('/')
+
 def main(request):
     if not request.user.is_authenticated:
         return render(request, 'mainpage.html', {})

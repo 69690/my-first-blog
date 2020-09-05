@@ -11,29 +11,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
         integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript"> -->
     <script type="text/javascript">
 
         // function d(el) {
         //     return document.getElementById(el);
         // }
         // ifvisible.setIdleDuration(30);
-        
+
         // window.onbeforeunload = function() { 
         //     console.log("YES");
         // };
 
+        // var firstView = false;
         var onBeforeUnLoadEvent = false;
+        var firstView = true;
 
-        window.onunload = window.onbeforeunload= function(){
-            if(!onBeforeUnLoadEvent){
+        window.onunload = window.onbeforeunload = function () {
+            if (!onBeforeUnLoadEvent) {
                 onBeforeUnLoadEvent = true;
                 //your code here
+
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/viewpostdecrement/{{ post.pk }}/",
+                        data: {
+                            // post_id: catid
+                        },
+                        success: function (data) {
+                            console.log("working");
+                            console.log(data);
+                            $('#now_viewing').text(': '+data);
+                        }
+                    }
+                )
             }
+
         };
 
-        ifvisible.on('statusChanged', function (e) {
-            alert("LOL");
-        });
+
+
 
         // ifvisible.idle(function () {
         //     d("result2").innerHTML = "(-_-) Good bye. ZzzZZzz...";
@@ -44,8 +65,64 @@
         //     d("result2").innerHTML = "(O_o) Hey!, you woke me up.";
         //     document.body.style.opacity = 1;
         // });
-        
-        ifvisible.onEvery(0.01, function () {
+
+
+
+        ifvisible.on('status Changed', function (e) {
+            if (firstView === false && ifvisible.now() === false) {
+                firstView = true;
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/viewpostdecrement/{{ post.pk }}/",
+                        data: {
+                            // post_id: catid
+                        },
+                        success: function (data) {
+                            // console.log("working");
+                            console.log("SUBTRACT");
+                            console.log(data);
+                            $('#now_viewing').text(': '+data);
+                        }
+                    }
+                )
+            }
+        });
+
+        ifvisible.onEvery(0.05, function () {
+            if (ifvisible.now() === true && firstView === true) {
+                firstView = false;
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/viewpost/{{ post.pk }}/",
+                        data: {
+                            // post_id: catid
+                        },
+                        success: function (data) {
+                            console.log("ADD");
+                            console.log(data);
+                            $('#now_viewing').text(': '+data);
+                        }
+                    }
+                )
+            }
+            else if (firstView === false && ifvisible.now() === false) {
+                firstView = true;
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "/viewpostdecrement/{{ post.pk }}/",
+                        data: {
+                            // post_id: catid
+                        },
+                        success: function (data) {
+                            // console.log("working");
+                            console.log("SUBTRACT");
+                        }
+                    }
+                )
+            }
             // Clock, as simple as it gets
             // var h = (new Date()).getHours();
             // var m = (new Date()).getMinutes();
@@ -54,7 +131,7 @@
             // m = m < 10 ? "0" + m : m;
             // s = s < 10 ? "0" + s : s;
             // // Update clock
-            console.log("hi");
+            // console.log("hi");
         });
 
         // setInterval(function () {
@@ -129,9 +206,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
         integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
