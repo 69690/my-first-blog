@@ -209,7 +209,28 @@
             {% endif %}
             <h1 class="mt-2 mb-3">{{ post.title }}</h1>
             <div class="shadow-lg p-3 mb-5 rounded">
-                <p class="lead">{{ post.text|linebreaksbr }}</p>
+                <!-- <p class="lead">{{ post.text|linebreaksbr }}</p> -->
+                <div class="row">
+                    <div class="col-3">
+                        <img src="https://img.icons8.com/bubbles/2x/fire-element.png" alt="thumbnail" class="img-thumbnail"
+                        style="width: 200px">
+                    </div>
+                    <div class="col-6">
+                        <p class="lead">Location: {{ post.location }}</p>
+                        <p class="lead">Date & Time: {{ post.published_date }}</p>
+                        <p class="lead">Pincode: {{ post.pincode }}</p>
+                        <p class="lead">Google Maps: <a href="https://www.google.com/maps/search/?api=1&query={{post.lat}},{{post.long}}&zoom=21" target="_blank"><button class="mb-5">View</button></a></p>
+                    </div>
+                    <div class="col-3">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <a href="{% url 'delete_post' pk=post.pk %}"><button class="mb-5">Responded</button></a>
+                    </div>
+                </div>
+                
+                
             </div>
         </div>
         {% endblock %}

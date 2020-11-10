@@ -9,6 +9,117 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script type="text/javascript">
+
+        // var onBeforeUnLoadEvent = false;
+        // var firstView = true;
+
+        // window.onunload = window.onbeforeunload = function () {
+        //     if (!onBeforeUnLoadEvent) {
+        //         onBeforeUnLoadEvent = true;
+        //         //your code here
+
+        //         $.ajax({
+        //         type: "GET",
+        //         url: "/home/",
+        //         data: {},
+        //         success: function (data) {
+        //             // console.log("VALUE CHANGED - Currently Reading");
+        //             setTimeout(function(){// wait for 5 secs(2)
+        //                 location.reload(); // then reload the page.(3)
+        //             }, 0); 
+        //         }
+        //     })
+        //     }
+
+        // };
+
+
+        // ifvisible.on('status Changed', function (e) {
+        //     if (firstView === false && ifvisible.now() === false) {
+        //         firstView = true;
+        //         $.ajax({
+        //         type: "GET",
+        //         url: "/home/",
+        //         data: {},
+        //         success: function (data) {
+        //             // console.log("VALUE CHANGED - Currently Reading");
+        //             // $('.container mt-2').text(': ' + data);
+        //             setTimeout(function(){// wait for 5 secs(2)
+        //                 location.reload(); // then reload the page.(3)
+        //             }, 0); 
+        //         }
+        //     })
+        //     }
+        // });
+
+        // ifvisible.onEvery(0.05, function () {
+        //     if (ifvisible.now() === true && firstView === true) {
+        //         firstView = false;
+        //         $.ajax({
+        //         type: "GET",
+        //         url: "/home/",
+        //         data: {},
+        //         success: function (data) {
+        //             // console.log("VALUE CHANGED - Currently Reading");
+        //             // $('.container mt-2').text(': ' + data);
+        //             setTimeout(function(){// wait for 5 secs(2)
+        //                 location.reload(); // then reload the page.(3)
+        //             }, 0); 
+        //         }
+        //         })
+        //     }
+        //     else if (firstView === false && ifvisible.now() === false) {
+        //         firstView = true;
+        //         $.ajax({
+        //         type: "GET",
+        //         url: "/home/",
+        //         data: {},
+        //         success: function (data) {
+        //             // console.log("VALUE CHANGED - Currently Reading");
+        //             // $('.container mt-2').text(': ' + data);
+        //             setTimeout(function(){// wait for 5 secs(2)
+        //                 location.reload(); // then reload the page.(3)
+        //             }, 0); 
+        //         }
+        //         })
+        //     }
+
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/home/",
+        //         data: {},
+        //         success: function (data) {
+        //             // console.log("VALUE CHANGED - Currently Reading");
+        //             // $('.container mt-2').text(': ' + data);
+        //             setTimeout(function(){// wait for 5 secs(2)
+        //                 location.reload(); // then reload the page.(3)
+        //             }, 0); 
+        //         }
+        //     })
+
+        // });
+        // $(document).ready(function () {
+        //     setTimeout(function () {
+        //         alert('Reloading Page');
+        //         location.reload(true);
+        //     }, 2000);
+        //     });
+
+        // setInterval(function () {
+        //     var info = ifvisible.getIdleInfo();
+        //     // Give 3% margin to stabilaze user output
+        //     if (info.timeLeftPer < 3) {
+        //         info.timeLeftPer = 0;
+        //         info.timeLeft = ifvisible.getIdleDuration();
+        //     }
+        //     d("seconds").innerHTML = parseInt(info.timeLeft / 1000), 10;
+        //     d("idlebar").style.width = info.timeLeftPer + '%';
+        // }, 100);
+
+    </script>
+
 </head>
 
 <body>
@@ -57,7 +168,7 @@
                 <div class="shadow-lg p-3 mb-5 rounded">
                     <br>
                     <p class="lead">published: {{ post.published_date }}</p>
-                    <h2><a class="blog" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <h2><a class="blog" href="{% url 'post_detail' pk=post.pk %}">{{ post.location }} </a></h2>
                     <!-- <p class="p">{{ post.text|linebreaksbr }}</p> -->
                 </div>
             </div>
@@ -116,6 +227,9 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ifvisible/1.0.6/ifvisible.js"
+        integrity="sha512-3PA+86AoEIS/cyGZ+3DNA+WBWUYt/6fE7x5IWaysUkVk4veMG8KgQ524jZSInv+MONL3UFD6kX3SC7MsUYB5OA=="
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -125,6 +239,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+            $(document).ready(function () { 
+              setTimeout(function () { 
+                location.reload(true); 
+              }, 5000); 
+            }); 
+    </script> 
 </body>
 
 </html>

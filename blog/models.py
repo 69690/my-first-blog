@@ -6,11 +6,15 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    #author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    #title = models.CharField(max_length=200)
+    #text = models.TextField()
+    location = models.CharField(max_length=200)
+    pincode = models.CharField(max_length=6)
+    lat = models.CharField(max_length=15)
+    long = models.CharField(max_length=15)
+    # created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(default=timezone.now)
     # url = models.CharField(max_length=20)
     blog_views = models.IntegerField(default=0)     #,null=True)
     current_view = models.IntegerField(default=0) #, null=True)
@@ -20,7 +24,7 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.location
 
 class FirstVisit(models.Model): #CHECK IF USER VISITS A STORY FOR THE FIRST TIME
     url = models.URLField()

@@ -22,4 +22,5 @@ urlpatterns = [
     path('viewpostdecrement/<int:pk>/', views.viewpostdecrement, name="viewpostdecrement"),
     path('getcount1/<int:pk>/', views.getcount1, name="getcount1"),
     path('getcount2/<int:pk>/', views.getcount2, name="getcount2"),
+    path('delete_post/<int:pk>/', views.delete_post, name="delete_post"),
 ]

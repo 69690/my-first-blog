@@ -112,6 +112,13 @@ def post_detail(request, pk):
     else:
         return redirect('/')
 
+def delete_post(request, pk):
+    if request.user.is_authenticated:
+        Post.objects.filter(id=pk).delete()
+        return redirect('/home/')
+    else:
+        return redirect('/')
+
 def about(request):
     if request.user.is_authenticated:
         return render(request, 'blog/about.html', {'user':request.user.username})
