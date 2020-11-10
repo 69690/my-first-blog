@@ -83,7 +83,7 @@ def main(request):
 
 def post_list(request):
     if request.user.is_authenticated:
-        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
         return render(request, 'blog/post_list.html', {'posts':posts, 'user':request.user.username})
     else:
         return redirect('/')
